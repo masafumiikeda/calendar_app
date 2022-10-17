@@ -1,0 +1,11 @@
+<%= link_to '予定の追加', new_calendar_path %>
+
+<%= month_calendar events: @events do |date, events| %>
+  <%= date.day %>
+
+    <% events.each do |event| %>
+    <div>
+      <%= event.title %>
+    </div>
+  <% end %>
+<% end %>
