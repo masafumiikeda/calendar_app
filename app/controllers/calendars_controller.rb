@@ -21,4 +21,6 @@ class CalendarsController < ApplicationController
     params.require(:event).permit(:title, :content, :start_time).merge(user_id: current_user.id)
   end
 
+  #
+
 end
