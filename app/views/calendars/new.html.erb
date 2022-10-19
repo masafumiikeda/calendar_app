@@ -1,6 +1,6 @@
 <h1>テスト</h1>
 
-<%= form_with(model: @event, local: true) do |form| %>
+<%= form_with(model: @event, local: true, url: calendars_path) do |form| %>
 
   <div class="title">
     <%= form.label :title %>
