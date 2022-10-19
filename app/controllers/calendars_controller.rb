@@ -1,4 +1,6 @@
 class CalendarsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @events = Event.all 
   end
@@ -6,6 +8,7 @@ class CalendarsController < ApplicationController
   def new
     @event = Event.new
   end
+
 
   def create
     Event.create(event_parameter)
@@ -15,6 +18,7 @@ class CalendarsController < ApplicationController
   private
 
   def event_parameter
-    params.require(:event).permit(:title, :content, :start_time)
+    params.require(:event).permit(:title, :content, :start_time).merge(user_id: current_user.id)
   end
+
 end
