@@ -321,3 +321,15 @@ a {
     width: 100%;
   }
 }
+
+/* カレンダー追加分 */
+
+.edit_destroy_btn{
+  display: flex;
+}
+
+.event_content{
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+}

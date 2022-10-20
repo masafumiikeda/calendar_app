@@ -9,8 +9,34 @@ class CalendarsController < ApplicationController
   end
 
   def create
-    Event.create(event_parameter)
-    redirect_to root_path
+    @event = Event.create(event_parameter)
+    if @event.save
+      redirect_to action: :index
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+    unless @event.user_id == current_user.id
+      redirect_to action: :index
+    end
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_parameter)
+      redirect_to action: :index
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    event = Event.find(params[:id])
+    event.destroy
+    redirect_to action: :index
   end
 
   private
