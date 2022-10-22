@@ -3,7 +3,7 @@ class CalendarsController < ApplicationController
   before_action :set_event, only: [:edit, :update] 
 
   def index
-    @events = Event.all 
+    @events = Event.where(user_id: "#{current_user.id}")
   end
 
   def new

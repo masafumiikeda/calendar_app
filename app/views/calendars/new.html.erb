@@ -3,10 +3,11 @@
     <div class="form__wrapper">
       <h2 class="page-heading">予定の追加</h2>
       <%= form_with(model: @event, local: true, url: calendars_path) do |form| %>
+        <%= render 'layouts/error_messages', model: form.object %>
 
         <div class="time">
           <%= form.label :start_time %>
-          <%= form.datetime_select :start_time %>
+          <%= form.date_select :start_time %>
         </div>
 
         <div class="title">
